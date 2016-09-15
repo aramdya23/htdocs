@@ -104,10 +104,6 @@
 function download_page($path){
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL,$path);
-//    curl_setopt($ch, CURLOPT_FAILONERROR,1);
-//    curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1);
-//    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-//    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
     $retValue = curl_exec($ch);
@@ -117,7 +113,7 @@ function download_page($path){
 
 $sXML = download_page('http://www.books.am/am/news');
 $xml = new SimpleXMLElement($sXML);
-$result = $xml->xpath('/body/div/script');
+echo $sXML;
 
 while(list( , $node) = each($result)) {
     echo '/body/div/script: ',$node,"\n";
